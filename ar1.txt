@@ -1,0 +1,7 @@
+556677 Adrian Toledo atoledo@fi.uba.ar 5
+667788 Carla Rios crios@fi.uba.ar 9
+778899 Damian Suarez dsuarez@fi.uba.ar 7
+889900 Irene Delgado idelgado@fi.uba.ar 8
+990011 Oscar Ponce oponce@fi.uba.ar 6
+111222 Claudia Bravo cbravo@fi.uba.ar 10
+222333 Esteban Salas esalas@fi.uba.ar 5
