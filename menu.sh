@@ -3,7 +3,7 @@
 # Parametro optativo -d
 if [ "$1" = "-d" ]; then
     echo "Borrando entorno EPNro1 y matando procesos en background..."
-    pkill -f "consolidar"
+    pkill -f "consolidar.sh"
     rm -rf "$HOME/EPNro1"
     echo "Listo."
     exit 0
@@ -16,22 +16,9 @@ if [ -z "$FILENAME" ]; then
     exit 1
 fi
 
-ENTORNO="$HOME/EPNro1"
-SALIDA="$ENTORNO/salida"
-ARCHIVO="$SALIDA/$FILENAME.txt"
-
-# Funcion consolidar que corre en background
-consolidar() {
-    while true; do
-        for archivo in "$ENTORNO/entrada"/*.txt; do
-            if [ -f "$archivo" ]; then
-                cat "$archivo" >> "$SALIDA/$FILENAME.txt"
-                mv "$archivo" "$ENTORNO/procesado/"
-            fi
-        done
-        sleep 5
-    done
-}
+export ENTORNO="$HOME/EPNro1"
+export SALIDA="$ENTORNO/salida"
+export ARCHIVO="$SALIDA/$FILENAME.txt"
 
 while true; do
     echo ""
@@ -56,7 +43,7 @@ while true; do
             if [ ! -d "$ENTORNO" ]; then
                 echo "Primero debe crear el entorno (opcion 1)."
             else
-                consolidar &
+                ./consolidar.sh &
                 echo "Proceso consolidar corriendo en background (PID $!)"
             fi
             ;;
